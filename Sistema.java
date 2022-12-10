@@ -27,14 +27,8 @@ public class Sistema {
             noleggi[noleggiNow] = n;
             noleggiNow++;
             //aggiorno il rack
-            
-            
-            
-            r.delBike(Arrays.asList(r.getBikes()).indexOf(b)); // b == r.getBikes()[i]
+            r.delBike(Arrays.asList(r.getBikes()).indexOf(b));
             //Arrays.asList(r.getBikes()).remove(b);
-            
-            
-            
             b.setStazione(null);
             System.out.println("bici "+b.getTarga()+" presa alla stazione "+r.getCodice()+" in data "+g+"/"+m+"/"+a);
         }
@@ -78,7 +72,7 @@ public class Sistema {
     }
     public void ricaricaSM(int importo, SmartCard sm){
         //aggiorna credito Sm
-        
+
     }
     public long getDate(int g,int m,int a){
         GregorianCalendar data1 = new GregorianCalendar(a, m, g);

@@ -10,5 +10,6 @@ public class Terminale {
         System.out.println(bergamo.cercaSm("paolo"));
         SmartCard miaCarta = bergamo.getSm(0);
         bergamo.prendiBici(miaCarta, 10, 12, 2022, bergamo.getBici(2), bergamo.getRack(0), 1);
-    }
+        System.out.println(bergamo.getRack(0).getBikes()[0].getTarga());
+    }   
 }
