@@ -5,15 +5,15 @@ public class Sistema {
     private Rack[] racks;
     private String comune;
     private int biciTot,rackTot;
-    private int biciNow = 1,rackNow = 1,noleggiNow = 1;
+    private int biciNow = 0,rackNow = 0,noleggiNow = 0;
 
     public Sistema(String comune,int biciTot, int rackTot){ //biciTot indica quanti bici può avere al massimo il comune
         this.biciTot = biciTot;                             //rackTot indica quante rack può avere al massimo il comune
         this.rackTot = rackTot;
-        bici =  new Bici[biciTot];
+        bici =  new Bici[this.biciTot];
         noleggi = new Noleggio[1000];
         sm = new SmartCard[1000];
-        racks = new Rack[rackTot];
+        racks = new Rack[this.rackTot];
         this.comune = comune;
     }
 
@@ -71,17 +71,17 @@ public class Sistema {
         }
     }
     public void assegnaBici(){//default
-        for(int i = 0; i<rackNow-1;i++){
-            for(int j = 0; j<biciNow/rackNow-1; j++){
+        for(int i = 0; i<rackNow;i++){
+            for(int j = 0; j<biciNow/rackNow; j++){
                 racks[i].addBike(j, bici[j]);
                 bici[j].setStazione(racks[i].getCodice());;
             }
         }
     }
     public String cercaBici(String targa){
-        for(int i = 0; i<biciNow-1; i++){
+        for(int i = 0; i<biciNow; i++){
             if(bici[i].getTarga().equals(targa)){
-                String trovata = "targa:" + bici[i].getTarga() + "\nstazione:" +bici[i].getStazione();
+                String trovata = "targa:" + bici[i].getTarga() + "\nstazione:" +bici[i].getStazione() + "comune " + comune;
                 return trovata;
             }
         }
