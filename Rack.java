@@ -29,9 +29,11 @@ public class Rack{
 
     public void addBike(int posto, Bici bike) {
         bikes[posto] = bike;
+        liberi--;
     }
 
     public void delBike(int posto) {
         bikes[posto] = null;
+        liberi++;
     }
 }
