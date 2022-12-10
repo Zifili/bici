@@ -70,6 +70,7 @@ public class Sistema {
     }
     public void ricaricaSM(int importo, SmartCard sm){
         //aggiorna credito Sm
+        
     }
     public long getDate(int g,int m,int a){
         GregorianCalendar data1 = new GregorianCalendar(a, m, g);
