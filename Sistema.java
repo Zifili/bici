@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -20,13 +21,20 @@ public class Sistema {
         this.comune = comune;
     }
     public void prendiBici(SmartCard sm, int g, int m, int a, Bici b, Rack r,int postoPreso){//addNoleggio
-        if(checkValidity(sm)){
+        if(checkValidity(sm) && Arrays.asList(r.getBikes()).contains(b)){
             //crea un oggetto noleggio
             Noleggio n = new Noleggio(g, m, a, b, sm, r);
             noleggi[noleggiNow] = n;
             noleggiNow++;
             //aggiorno il rack
-            r.delBike(postoPreso);
+            
+            
+            
+            r.delBike(Arrays.asList(r.getBikes()).indexOf(b)); // b == r.getBikes()[i]
+            //Arrays.asList(r.getBikes()).remove(b);
+            
+            
+            
             b.setStazione(null);
             System.out.println("bici "+b.getTarga()+" presa alla stazione "+r.getCodice()+" in data "+g+"/"+m+"/"+a);
         }
