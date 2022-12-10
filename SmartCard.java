@@ -1,6 +1,7 @@
 import java.util.Date;
 
 public class SmartCard {
+    
     String codice;
     Date attivazione;
     int credito=0;
