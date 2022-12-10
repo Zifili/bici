@@ -10,14 +10,16 @@ public class InTeRfAcCiA extends JFrame{
     private ImageIcon i;
     private JLabel info;
     private JTextField cerca;
+    private JTextField nome;
     private Sistema bergamo;
     public InTeRfAcCiA(){
         i = new ImageIcon("img/home.png");
         invia = new JButton("cerca");
         home = new JButton(i);
         info = new JLabel("RASTRELLIERATOR-3000");
-        cerca = new JTextField("cerca...");
+        cerca = new JTextField("cerca bici...");
         creaSm = new JButton("Crea una SmartCard");
+        nome = new JTextField("inserisci il tuo nome...");
         bergamo = new Sistema("Bergamo",100,100);
         bergamo.createBicis(40);
         bergamo.createRacks(4,10);
@@ -61,7 +63,7 @@ public class InTeRfAcCiA extends JFrame{
         cerca.setForeground(Color.GRAY);
         cerca.addFocusListener(new FocusListener(){
             public void focusGained(FocusEvent e){
-                if (cerca.getText().equals("cerca...")){
+                if (cerca.getText().equals("cerca bici...")){
                     cerca.setText("");
                     cerca.setForeground(Color.BLACK);
                 }
@@ -69,15 +71,39 @@ public class InTeRfAcCiA extends JFrame{
             public void focusLost(FocusEvent e){
                 if (cerca.getText().isEmpty()) {
                     cerca.setForeground(Color.GRAY);
-                    cerca.setText("cerca...");
+                    cerca.setText("cerca bici...");
                 }
             }
             });
         
         creaSm.setSize(200,50);
-        creaSm.setLocation(40,150);
+        creaSm.setLocation(40,200);
         creaSm.setBackground(Color.GREEN);
+        creaSm.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                
+            }
+        });
         
+        nome.setSize(200,25);
+        nome.setLocation(10,150);
+        nome.setForeground(Color.GRAY);
+        nome.addFocusListener(new FocusListener(){
+            public void focusGained(FocusEvent e){
+                if (nome.getText().equals("inserisci il tuo nome...")){
+                    nome.setText("");
+                    nome.setForeground(Color.BLACK);
+                }
+            }
+            public void focusLost(FocusEvent e){
+                if (nome.getText().isEmpty()) {
+                    nome.setForeground(Color.GRAY);
+                    nome.setText("inserisci il tuo nome...");
+                }
+            }
+            });
+        
+        add(nome);
         add(creaSm);
         add(cerca);
         add(info);

@@ -1,6 +1,8 @@
 public class Terminale {
     public static void main(String[] args) {
-        InTeRfAcCiA f = new InTeRfAcCiA();
+        Home h = new Home();
+
+
         /*System.out.println(bergamo.cercaBici("b1"));
         System.out.println(bergamo.cercaBici("b100"));
         bergamo.addSM("paolo", 10, 12, 2022, 10000);
