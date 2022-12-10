@@ -1,32 +1,32 @@
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class SmartCard {
     
-    String codice;
-    Date attivazione;
+    int codice;
+    GregorianCalendar attivazione;
     int credito=0;
     String nominativo;
 
-    public SmartCard(String codice, Date attivazione, int credito, String nominativo) {
+    public SmartCard(int codice, int g, int m,int a, int credito, String nominativo) {
         this.codice = codice;
-        this.attivazione = attivazione;
+        this.attivazione = new GregorianCalendar(a,m,g);
         this.credito = credito;
         this.nominativo = nominativo;
     }
-    public String getCodice() {
+    public int getCodice() {
         return codice;
     }
 
-    public void setCodice(String codice) {
-        codice = codice;
+    public void setCodice(int codice) {
+        this.codice = codice;
     }
 
-    public Date getAttivazione() {
+    public GregorianCalendar getAttivazione() {
         return attivazione;
     }
 
-    public void setAttivazione(Date attivazione) {
-        attivazione = attivazione;
+    public void setAttivazione(GregorianCalendar attivazione) {
+        this.attivazione = attivazione;
     }
 
     public int getCredito() {
@@ -34,7 +34,7 @@ public class SmartCard {
     }
 
     public void setCredito(int credito) {
-        credito = credito;
+        this.credito = credito;
     }
 
     public String getNominativo() {
@@ -42,7 +42,7 @@ public class SmartCard {
     }
 
     public void setNominativo(String nominativo) {
-        nominativo = nominativo;
+        this.nominativo = nominativo;
     }
 }
 
