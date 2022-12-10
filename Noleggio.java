@@ -1,10 +1,30 @@
+import java.util.GregorianCalendar;
+
 public class Noleggio {
-    private long initDate,endDate;
+    private GregorianCalendar initDate,endDate;
     private String targa;
     private SmartCard SM;
     private String initSt,endSt;
 
-    public Noleggio(long initDate,String targa,SmartCard SM,String initSt){
-        
+    public Noleggio( int g,int m,int a ,Bici bici,SmartCard SM,Rack initSt){
+        initDate = new GregorianCalendar(a,m,g);
+        targa = bici.getTarga();
+        this.SM = SM;
+        this.initSt = initSt.getCodice();
+    }
+    public void setEndSt(String endSt){
+        this.endSt = endSt;
+    }
+    public GregorianCalendar getEndDate(){
+        return endDate;
+    } 
+    public void setEndDate(int g, int m, int a){
+        endDate = new GregorianCalendar(a,m,g);
+    }
+    public String getTarga() {
+        return targa;
+    }
+    public SmartCard getSM() {
+        return SM;
     }
 }
