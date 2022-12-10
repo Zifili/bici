@@ -43,7 +43,7 @@ public class Sistema {
     }
     public void createRacks(Rack[] r, int totR,int totP){
         for(int i = rackNow; i<totR; i++){
-            r[i] = new Rack(rackNow,totP);
+            r[i] = new Rack("R"+rackNow,totP);
             rackNow++;
         }
     }
