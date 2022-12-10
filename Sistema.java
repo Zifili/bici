@@ -110,10 +110,17 @@ public class Sistema {
         }
     }
     public void assegnaBici(){//default
-        for(int i = 0; i<rackNow;i++){
-            for(int j = 0; j<biciNow/rackNow; j++){
-                racks[i].addBike(j, bici[j]);
-                bici[j].setStazione(racks[i].getCodice());;
+        int j = 0;//bici
+        int i = 0;//racks
+        int k = 0;//rack
+        while(bici[j] != null){
+            racks[i].addBike(k, bici[j]);
+            bici[j].setStazione(racks[i].getCodice());
+            j++;
+            k++;
+            if(j%(biciNow/rackNow) == 0){
+                i++;
+                k=0;
             }
         }
     }
