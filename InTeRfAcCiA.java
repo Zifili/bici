@@ -1,6 +1,10 @@
 import java.awt.event.*;  
 import javax.swing.*;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class InTeRfAcCiA extends JFrame{
     //qualcuno dovrà pur farlo...
@@ -14,12 +18,12 @@ public class InTeRfAcCiA extends JFrame{
     private Sistema bergamo;
     public InTeRfAcCiA(){
         i = new ImageIcon("img/home.png");
-        invia = new JButton("cerca");
+        invia = new JButton("Cerca");
         home = new JButton(i);
         info = new JLabel("RASTRELLIERATOR-3000");
-        cerca = new JTextField("cerca bici...");
+        cerca = new JTextField("Cerca bici...");
         creaSm = new JButton("Crea una SmartCard");
-        nome = new JTextField("inserisci il tuo nome...");
+        nome = new JTextField("Inserisci il tuo nome...");
         bergamo = new Sistema("Bergamo",100,100);
         bergamo.createBicis(40);
         bergamo.createRacks(4,10);
@@ -30,9 +34,32 @@ public class InTeRfAcCiA extends JFrame{
     public void init(){
         setLayout(null);
         setSize(300,300);
+        setResizable(false);
+        getContentPane().setBackground(Color.decode("#95A3B3"));
+        setTitle("CREA SMARTCARD");
+
         
         invia.setSize(70,25);
         invia.setLocation(210,100);
+
+        invia.setBorderPainted(false);
+        invia.setBackground(Color.decode("#222222"));
+        invia.setForeground(Color.decode("#FFFFFF"));
+        invia.setFocusPainted(false);
+        invia.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                invia.setBackground(Color.decode("#1098F7"));
+                invia.setForeground(Color.decode("#222222"));
+                invia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                //startButton.setBackground(UIManager.getColor("control"));
+                invia.setBackground(Color.decode("#222222"));
+                invia.setForeground(Color.decode("#FFFFFF"));
+                invia.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+        });
+
         invia.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 String ricerca = cerca.getText();
@@ -61,24 +88,50 @@ public class InTeRfAcCiA extends JFrame{
         cerca.setSize(200,25);
         cerca.setLocation(10,100);
         cerca.setForeground(Color.GRAY);
+
+        Font fieldFont = new Font("Arial", Font.PLAIN, 14);
+        cerca.setFont(fieldFont);
+        cerca.setBackground(Color.decode("#222222"));
+        cerca.setForeground(Color.decode("#FFFFFF"));
+        cerca.setCaretColor(Color.decode("#FFFFFF")); // modifica l'icona lampeggiante quando selezioni il testo
+        cerca.setBorder(new LineBorder(Color.decode("#222222"),1));
+
         cerca.addFocusListener(new FocusListener(){
             public void focusGained(FocusEvent e){
-                if (cerca.getText().equals("cerca bici...")){
+                if (cerca.getText().equals("Cerca bici...")){
                     cerca.setText("");
-                    cerca.setForeground(Color.BLACK);
+                    cerca.setForeground(Color.decode("#FFFFFF"));
                 }
             }
             public void focusLost(FocusEvent e){
                 if (cerca.getText().isEmpty()) {
-                    cerca.setForeground(Color.GRAY);
-                    cerca.setText("cerca bici...");
+                    cerca.setForeground(Color.decode("#FFFFFF"));
+                    cerca.setText("Cerca bici...");
                 }
             }
             });
         
         creaSm.setSize(200,50);
         creaSm.setLocation(40,200);
-        creaSm.setBackground(Color.GREEN);
+
+        creaSm.setBorderPainted(false);
+        creaSm.setBackground(Color.decode("#222222"));
+        creaSm.setForeground(Color.decode("#FFFFFF"));
+        creaSm.setFocusPainted(false);
+        creaSm.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                creaSm.setBackground(Color.decode("#1098F7"));
+                creaSm.setForeground(Color.decode("#222222"));
+                creaSm.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                //startButton.setBackground(UIManager.getColor("control"));
+                creaSm.setBackground(Color.decode("#222222"));
+                creaSm.setForeground(Color.decode("#FFFFFF"));
+                creaSm.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+        });
+
         creaSm.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 
@@ -88,17 +141,25 @@ public class InTeRfAcCiA extends JFrame{
         nome.setSize(200,25);
         nome.setLocation(10,150);
         nome.setForeground(Color.GRAY);
+
+        Font fieldFont1 = new Font("Arial", Font.PLAIN, 14);
+        nome.setFont(fieldFont1);
+        nome.setBackground(Color.decode("#222222"));
+        nome.setForeground(Color.decode("#FFFFFF"));
+        nome.setCaretColor(Color.decode("#FFFFFF")); // modifica l'icona lampeggiante quando selezioni il testo
+        nome.setBorder(new LineBorder(Color.decode("#222222"),1));
+        
         nome.addFocusListener(new FocusListener(){
             public void focusGained(FocusEvent e){
-                if (nome.getText().equals("inserisci il tuo nome...")){
+                if (nome.getText().equals("Inserisci il tuo nome...")){
                     nome.setText("");
-                    nome.setForeground(Color.BLACK);
+                    nome.setForeground(Color.decode("#FFFFFF"));
                 }
             }
             public void focusLost(FocusEvent e){
                 if (nome.getText().isEmpty()) {
-                    nome.setForeground(Color.GRAY);
-                    nome.setText("inserisci il tuo nome...");
+                    nome.setForeground(Color.decode("#FFFFFF"));
+                    nome.setText("Inserisci il tuo nome...");
                 }
             }
             });
