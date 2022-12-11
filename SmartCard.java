@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class SmartCard {
@@ -43,6 +44,12 @@ public class SmartCard {
 
     public void setNominativo(String nominativo) {
         this.nominativo = nominativo;
+    }
+    public String getAttivazioneData(){
+        String g = String.valueOf(attivazione.get(Calendar.DAY_OF_MONTH));
+        String m = String.valueOf(attivazione.get(Calendar.MONTH)+1);
+        String a = String.valueOf(attivazione.get(Calendar.YEAR));
+        return g+"/"+m+"/"+a;
     }
 }
 

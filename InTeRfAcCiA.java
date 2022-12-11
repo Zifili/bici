@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
-import javax.swing.border.Border;
+//import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 public class InTeRfAcCiA extends JFrame{
@@ -11,6 +11,7 @@ public class InTeRfAcCiA extends JFrame{
     private JButton invia;
     private JButton home;
     private JButton creaSm;
+    private JButton noleggia;
     private ImageIcon i;
     private JLabel info;
     private JTextField cerca;
@@ -20,9 +21,10 @@ public class InTeRfAcCiA extends JFrame{
         i = new ImageIcon("img/home.png");
         invia = new JButton("Cerca");
         home = new JButton(i);
+        creaSm = new JButton("Crea una SmartCard");
+        noleggia = new JButton("noleggia una bici");
         info = new JLabel("RASTRELLIERATOR-3000");
         cerca = new JTextField("Cerca bici...");
-        creaSm = new JButton("Crea una SmartCard");
         nome = new JTextField("Inserisci il tuo nome...");
         bergamo = new Sistema("Bergamo",100,100);
         bergamo.createBicis(40);
@@ -134,7 +136,40 @@ public class InTeRfAcCiA extends JFrame{
 
         creaSm.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                
+                String nominativo = nome.getText();
+                bergamo.addSM(nominativo, 100);
+                JOptionPane.showMessageDialog(null, "SmartCard creata correttamente","avviso",1);
+                int code = bergamo.getSMNow()-1;
+                JOptionPane.showMessageDialog(null, "Nome: "+nominativo+"\ncredito:100"+"\ndata creazione:"+bergamo.getSm(code).getAttivazioneData()+"\ncomune: Bergamo\ncodice:"+code,"infocard",1);
+                remove(creaSm);
+                noleggia.setSize(200,50);
+                noleggia.setLocation(40,200);
+                noleggia.setBackground(Color.decode("#222222"));
+                noleggia.setForeground(Color.decode("#FFFFFF"));
+                noleggia.setFocusPainted(false);
+                noleggia.addMouseListener(new MouseAdapter() {
+                    public void mouseEntered(java.awt.event.MouseEvent evt) {
+                        noleggia.setBackground(Color.decode("#1098F7"));
+                        noleggia.setForeground(Color.decode("#222222"));
+                        noleggia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    }
+                    public void mouseExited(java.awt.event.MouseEvent evt) {
+                        //startButton.setBackground(UIManager.getColor("control"));
+                        noleggia.setBackground(Color.decode("#222222"));
+                        noleggia.setForeground(Color.decode("#FFFFFF"));
+                        noleggia.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                    }
+                });
+                noleggia.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+                        String bici = cerca.getText();
+                        int b = Character.getNumericValue(bici.charAt(1));
+                        int r = Character.getNumericValue((bici.charAt(4)));
+                        String out = bergamo.prendiBici(bergamo.getSm(code), 11,12,2022,bergamo.getBici(b),bergamo.getRack(r));
+                        JOptionPane.showMessageDialog(null,out);
+                    }
+                });
+                add(noleggia);
             }
         });
         

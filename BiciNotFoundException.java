@@ -4,4 +4,5 @@ public class BiciNotFoundException extends Exception{
     public BiciNotFoundException(String s){
         this.s = s;
     }
+
 }

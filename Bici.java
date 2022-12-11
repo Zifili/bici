@@ -16,4 +16,5 @@ public class Bici{
     public String getStazione() {
         return stazione;
     }
+    
 }

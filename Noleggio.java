@@ -29,4 +29,12 @@ public class Noleggio {
     public SmartCard getSM() {
         return SM;
     }
+    public GregorianCalendar getInitDate() {
+        return initDate;
+    }
+    public String getInitSt() {
+        return initSt;
+    }public String getEndSt() {
+        return endSt;
+    }
 }
