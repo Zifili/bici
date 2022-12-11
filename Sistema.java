@@ -20,7 +20,7 @@ public class Sistema {
         racks = new Rack[this.rackTot];
         this.comune = comune;
     }
-    public void prendiBici(SmartCard sm, int g, int m, int a, Bici b, Rack r,int postoPreso){//addNoleggio
+    public String prendiBici(SmartCard sm, int g, int m, int a, Bici b, Rack r){//addNoleggio
         if(checkValidity(sm) && Arrays.asList(r.getBikes()).contains(b)){
             //crea un oggetto noleggio
             Noleggio n = new Noleggio(g, m, a, b, sm, r);
@@ -30,8 +30,9 @@ public class Sistema {
             r.delBike(Arrays.asList(r.getBikes()).indexOf(b));
             //Arrays.asList(r.getBikes()).remove(b);
             b.setStazione(null);
-            System.out.println("bici "+b.getTarga()+" presa alla stazione "+r.getCodice()+" in data "+g+"/"+m+"/"+a);
+            return ("bici "+b.getTarga()+" presa alla stazione "+r.getCodice()+" in data "+g+"/"+m+"/"+a);
         }
+        return("bici non disponibile");
     }
     public void riportaBici(int g,int m,int a,Noleggio n, Rack r, Bici b,int postoOccupato){//addBici
         if(r.getBikes()[postoOccupato] != null || postoOccupato < 0 || postoOccupato > r.getBikes().length){
@@ -51,10 +52,14 @@ public class Sistema {
             System.out.println("bici "+b.getTarga()+" riportata alla stazione "+r.getCodice()+" in data "+g+"/"+m+"/"+a);
         }
     }
-    public void addSM(String nome,int g,int m,int a,int credito){
+    public void addSM(String nome,int credito){
         //crea una smartcard
+        GregorianCalendar ora = new GregorianCalendar();
+        int a = ora.get(Calendar.YEAR);
+        int m = ora.get (Calendar.MONTH)+1;
+        int g = ora.get (Calendar.DATE);
         sm[SMNow] = new SmartCard(SMNow,g,m,a,credito,nome);
-        System.out.println(sm[SMNow].getCodice());
+        //System.out.println(sm[SMNow].getCodice());
         SMNow++;
     }
     public void addRack(int posti,int nRack){
@@ -110,10 +115,17 @@ public class Sistema {
         }
     }
     public void assegnaBici(){//default
-        for(int i = 0; i<rackNow;i++){
-            for(int j = 0; j<biciNow/rackNow; j++){
-                racks[i].addBike(j, bici[j]);
-                bici[j].setStazione(racks[i].getCodice());;
+        int j = 0;//bici
+        int i = 0;//racks
+        int k = 0;//rack
+        while(bici[j] != null){
+            racks[i].addBike(k, bici[j]);
+            bici[j].setStazione(racks[i].getCodice());
+            j++;
+            k++;
+            if(j%(biciNow/rackNow) == 0){
+                i++;
+                k=0;
             }
         }
     }
@@ -143,5 +155,8 @@ public class Sistema {
             }
         }
         return "SmartCard di " + nome + " not found";
+    }
+    public int getSMNow() {
+        return SMNow;
     }
 }
