@@ -1,4 +1,6 @@
-public class Rack{
+import java.io.Serializable;
+
+public class Rack implements Serializable{
     private String codice;
     private Bici[] bikes;
     private int totPosti;

@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Noleggio
+comment1.params=g\ m\ a\ bici\ SM\ initSt
+comment1.target=Noleggio(int,\ int,\ int,\ Bici,\ SmartCard,\ Rack)
+comment10.params=
+comment10.target=java.lang.String\ getInitSt()
+comment11.params=
+comment11.target=java.lang.String\ getEndSt()
+comment2.params=endSt
+comment2.target=void\ setEndSt(java.lang.String)
+comment3.params=
+comment3.target=java.util.GregorianCalendar\ getEndDate()
+comment4.params=b
+comment4.target=boolean\ isNoleggiata(Bici)
+comment5.params=g\ m\ a
+comment5.target=void\ setEndDate(int,\ int,\ int)
+comment6.params=
+comment6.target=java.lang.String\ getTarga()
+comment7.params=
+comment7.target=SmartCard\ getSM()
+comment8.params=
+comment8.target=java.util.GregorianCalendar\ getInitDate()
+comment9.params=
+comment9.target=java.lang.String\ getGiorno()
+numComments=12

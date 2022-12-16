@@ -1,7 +1,8 @@
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.io.Serializable;
 
-public class SmartCard {
+public class SmartCard implements Serializable{
     
     int codice;
     GregorianCalendar attivazione;

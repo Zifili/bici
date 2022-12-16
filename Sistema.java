@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class Sistema {
+public class Sistema implements Serializable{
     private Bici[] bici;
     private Noleggio[] noleggi;
     private SmartCard[] sm;
@@ -141,6 +142,7 @@ public class Sistema {
     public Bici getBici(int i){
         return bici[i];
     }
+    
     public SmartCard getSm(int i) {
         return sm[i];
     }
@@ -158,5 +160,29 @@ public class Sistema {
     }
     public int getSMNow() {
         return SMNow;
+    }
+    /*public Bici weekend(){
+        Bici[] b = new Bici[1000];
+        for(int i = 0; i < noleggiNow; i++){
+            if(noleggi[i].getGiorno())
+        }
+    }*/
+    
+    public Bici[] notUsed(){
+        Bici[] maiNoleggiate = new Bici[1000];
+        
+        for(int i = 0; i < biciNow; i++){
+            maiNoleggiate[i] = bici[i];
+        }
+        
+        for(int i = 0; i < biciNow; i++){
+            for(int j = 0; j < noleggiNow; j++){
+                if(noleggi[j].isNoleggiata(maiNoleggiate[i])){
+                    maiNoleggiate[i] = null;
+                    break;
+                }
+            }
+        }
+        return maiNoleggiate;
     }
 }

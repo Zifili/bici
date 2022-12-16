@@ -40,7 +40,7 @@ public class Comune extends JFrame{
         home.addActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent e){
                     dispose();
-                    Home h = new Home();
+                    Home h = new Home(bergamo);
                     h.setVisible(true);
                 }
             }    

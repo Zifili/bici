@@ -3,16 +3,21 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 public class Home extends JFrame {
     private JButton creaCard;
     private JButton creaComune;
+    private JButton salva;
     private JLabel titolo;
-
-    public Home(){
+    Sistema sys;
+    public Home(Sistema s){
+        sys = s;
         creaCard = new JButton("Crea la tua SmartCard");
         creaComune = new JButton("Configura il tuo comune");
         titolo = new JLabel("RASTRELLIERATOR-3000");
+        salva = new JButton("salva");
         init();
     }
 
@@ -26,7 +31,8 @@ public class Home extends JFrame {
         ActionListener carta = new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 dispose();
-                InTeRfAcCiA i = new InTeRfAcCiA();
+                //todo
+                InTeRfAcCiA i = new InTeRfAcCiA(sys);
                 i.setVisible(true);
             }
         };
@@ -86,7 +92,25 @@ public class Home extends JFrame {
         titolo.setSize(200,100);
         titolo.setLocation(70,10);
         titolo.setForeground(Color.decode("#222222"));
+
+        salva.setSize(75,25);
+        salva.setLocation(100,225);
+        salva.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try {
+ 
+                    FileOutputStream fileOut = new FileOutputStream("db");
+                    ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+                    objectOut.writeObject(sys);
+                    objectOut.close();
+                    System.out.println("The Object  was succesfully written to a file");
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
         
+        add(salva);
         add(creaCard);
         add(creaComune);
         add(titolo);

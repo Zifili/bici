@@ -17,7 +17,9 @@ public class InTeRfAcCiA extends JFrame{
     private JTextField cerca;
     private JTextField nome;
     private Sistema bergamo;
-    public InTeRfAcCiA(){
+    
+    public InTeRfAcCiA(Sistema s){
+        bergamo = s;
         i = new ImageIcon("img/home.png");
         invia = new JButton("Cerca");
         home = new JButton(i);
@@ -26,10 +28,10 @@ public class InTeRfAcCiA extends JFrame{
         info = new JLabel("RASTRELLIERATOR-3000");
         cerca = new JTextField("Cerca bici...");
         nome = new JTextField("Inserisci il tuo nome...");
-        bergamo = new Sistema("Bergamo",100,100);
+        /*bergamo = new Sistema("Bergamo",100,100);
         bergamo.createBicis(40);
         bergamo.createRacks(4,10);
-        bergamo.assegnaBici();
+        bergamo.assegnaBici();*/
         init();
     }
 
@@ -78,7 +80,7 @@ public class InTeRfAcCiA extends JFrame{
         home.addActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent e){
                     dispose();
-                    Home h = new Home();
+                    Home h = new Home(bergamo);
                     h.setVisible(true);
                 }
             }    

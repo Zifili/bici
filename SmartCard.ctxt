@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=SmartCard
+comment1.params=codice\ g\ m\ a\ credito\ nominativo
+comment1.target=SmartCard(int,\ int,\ int,\ int,\ int,\ java.lang.String)
+comment10.params=
+comment10.target=java.lang.String\ getAttivazioneData()
+comment2.params=
+comment2.target=int\ getCodice()
+comment3.params=codice
+comment3.target=void\ setCodice(int)
+comment4.params=
+comment4.target=java.util.GregorianCalendar\ getAttivazione()
+comment5.params=attivazione
+comment5.target=void\ setAttivazione(java.util.GregorianCalendar)
+comment6.params=
+comment6.target=int\ getCredito()
+comment7.params=credito
+comment7.target=void\ setCredito(int)
+comment8.params=
+comment8.target=java.lang.String\ getNominativo()
+comment9.params=nominativo
+comment9.target=void\ setNominativo(java.lang.String)
+numComments=11

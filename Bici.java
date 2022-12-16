@@ -1,4 +1,6 @@
-public class Bici{
+import java.io.Serializable;
+
+public class Bici implements Serializable{
     private String targa;
     private String stazione;
     
@@ -6,7 +8,6 @@ public class Bici{
         this.targa = targa;
         this.stazione = stazione;
     }
-
     public String getTarga(){
         return targa;
     }
